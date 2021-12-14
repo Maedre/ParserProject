@@ -6,24 +6,23 @@ class Register:
     registered_users = {}
 
     def __init__(self, input_files):
-        for i in range(len(input_files)):
-            self.input_file = input_files[i]
-            with open(self.input_file) as f:
+        for input_file in input_files:
+            with open(input_file) as f:
                 # For sake of simplicity we use json library
-                data = json.load(f)
+                json_list = json.load(f)
 
-                for j in range(len(data)):
+                for item in json_list:
                     # collect data for better readibility
-                    name = data[j]["name"]
-                    email = data[j]["email"]
-                    ip = data[j]["ip"]
-                    devices = data[j]["devices"]
+                    name    = item["name"]
+                    email   = item["email"]
+                    ip      = item["ip"]
+                    devices = item["devices"]
                     # merge devices if the email exist in registered user base
                     devices = devices if email not in self.registered_users\
                             else self.merge_devices(self.registered_users[email]["devices"], devices)
                     # update the entry
-                    self.registered_users[email]={"name": name,\
-                                                  "ip": ip,\
+                    self.registered_users[email]={"name"   : name,\
+                                                  "ip"     : ip,\
                                                   "devices": devices}
                     
         print(self.registered_users["janko@jankovic.rs"]["devices"])
