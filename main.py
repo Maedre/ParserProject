@@ -63,4 +63,4 @@ class Register:
         pass
 
 if __name__ == "__main__":
-    Register1 = Register(["project_example.json"])
+    Register1 = Register(["users_1.json"])
