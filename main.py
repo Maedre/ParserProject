@@ -11,10 +11,13 @@ class Register:
             with open(self.input_file) as f:
                 # For sake of simplicity we use json library
                 data = json.load(f)
+                devices = set()
                 for j in range(len(data)):
+                    hashable = frozenset(data[j].get("devices"))
+                    devices |= hashable
                     self.registered_users[data[j]["email"]]={"name": data[j]["name"],\
                                                              "ip": data[j]["ip"],\
-                                                             "devices": data[j]["devices"]}
+                                                             "devices": devices}
                     
                 
         print(self.registered_users["janko@jankovic.rs"]["devices"])
