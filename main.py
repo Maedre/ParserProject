@@ -11,15 +11,21 @@ class Register:
             with open(self.input_file) as f:
                 # For sake of simplicity we use json library
                 data = json.load(f)
-                devices = set()
+
                 for j in range(len(data)):
-                    hashable = frozenset(data[j].get("devices"))
-                    devices |= hashable
-                    self.registered_users[data[j]["email"]]={"name": data[j]["name"],\
-                                                             "ip": data[j]["ip"],\
-                                                             "devices": devices}
+                    # collect data for better readibility
+                    name = data[j]["name"]
+                    email = data[j]["email"]
+                    ip = data[j]["ip"]
+                    devices = data[j]["devices"]
+                    # merge devices if the email exist in registered user base
+                    devices = devices if email not in self.registered_users\
+                            else self.merge_devices(self.registered_users[email]["devices"], devices)
+                    # update the entry
+                    self.registered_users[email]={"name": name,\
+                                                  "ip": ip,\
+                                                  "devices": devices}
                     
-                
         print(self.registered_users["janko@jankovic.rs"]["devices"])
         #self.registered_users = json.load(f)
         # parse JSON files
@@ -27,6 +33,9 @@ class Register:
         # implement error checks1
         # optional: run json parsers in parallel
         pass
+    
+    def merge_devices(self, devices_i1, devices_i2):
+        return list(set(devices_i1) | set(devices_i2))
 
     # overloaded methods
     def __len__(self):
