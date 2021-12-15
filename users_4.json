@@ -46,6 +46,12 @@
         "email": "juliaroberts@gmail.com",
         "ip": "45.57.162.95",
         "devices": ["Julia's iphone"]
+    },
+    {
+        "name": "Erdal Tufan",
+        "email": "erdal.tufan@tttech-auto.com",
+        "ip": "249.210.49.12",
+        "devices": ["DESKTOP-4545","Erdal's iPhone", "Erdal's Tablet"]
     }
 ]
 
