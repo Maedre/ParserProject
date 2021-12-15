@@ -1,4 +1,5 @@
 import json
+import re
 
 
 class Register:
@@ -38,10 +39,13 @@ class Register:
             return False
 
     def __is_ip(self, key):
-        # todo
-        # implement
         # checks if the registered IP of the key is a valid IPv4 address
-        return True
+        IPv4Pattern = r'^([\d]{1,3}.){3}[\d]{1,3}$'
+        IP = self.get_IP(key)
+        if re.match(IPv4Pattern, IP) is None:
+            return False
+        else:
+            return True
 
     # overloaded methods
     def __len__(self):
