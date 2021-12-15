@@ -1,51 +1,51 @@
 [
     {
-        "name": "",
-        "email": "",
+        "name": "Angelina Jolie",
+        "email": "angelinajolie@gmail.com",
         "ip": "106.117.155.253",
-        "devices": [""]
+        "devices": ["Angelina's Samsung phone"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Brad Pitt",
+        "email": "bradpitt@gmail.com",
         "ip": "32.165.54.99",
-        "devices": []
+        "devices": ["Brad's Nokia 3310", "Porsche"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Scarlett Johansson",
+        "email": "scarlett@gmail.com",
         "ip": "180.207.2.165",
-        "devices": []
+        "devices": ["General Mobile phone"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Jennifer Lawrence",
+        "email": "jennifer@gmail.com",
         "ip": "204.53.95.143",
-        "devices": []
+        "devices": ["Jennifers's Macbook pro"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Johnny Depp",
+        "email": "johnnydepp@gmail.com",
         "ip": "67.213.74.136",
-        "devices": []
+        "devices": ["Samsung A50"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Nicole Kidman",
+        "email": "nicolekidman@gmail.com",
         "ip": "47.164.188.88",
-        "devices": []
+        "devices": ["DESKTOP-0510"]
     },
     {
-        "name": "",
-        "email": "",
-        "ip": "46.71.163.89",
-        "devices": []
+        "name": "Ekrem İmamoğlu",
+        "email": "ekrem.imamoglu@istanbulbel.gov.tr",
+        "ip": "12.22.175.21",
+        "devices": ["DESKTOP-3434", "Ekrem's iPhone"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Julia Roberts",
+        "email": "juliaroberts@gmail.com",
         "ip": "45.57.162.95",
-        "devices": []
+        "devices": ["Julia's iphone"]
     }
 ]
 
