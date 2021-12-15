@@ -9,31 +9,31 @@
         "name": "Firat Sonmez",
         "email": "firatzz@gmail.com",
         "ip": "251.182.123.170",
-        "devices": []
+        "devices": ["desktop RDPN-8752", "mobile MB-554"]
     },
     {
         "name": "Onur Cirit",
         "email": "onurcirit@gmail.com",
         "ip": "131.116.31.131",
-        "devices": []
+        "devices": ["desktop RDPN-1420", "mobile MB-996, tablet TB-29"]
     },
     {
         "name": "Ilke Turkel",
         "email": "ilketurkel@gmail.com",
         "ip": "2.111.255.12",
-        "devices": []
+        "devices": ["desktop RDPN-5687", "mobile MB-112"]
     },
     {
         "name": "Ahmet Can Sivri",
         "email": "cansivri@gmail.com",
         "ip": "245.14.240.222",
-        "devices": []
+        "devices": ["desktop RDPN-8239"]
     },
     {
         "name": "Kivanc Guncavdi",
         "email": "kivancguncavdi@gmail.com",
         "ip": "25.202.46.103",
-        "devices": []
+        "devices": ["mobile MB-789"]
     },
     {
         "name": "Janko Jankovic",
@@ -45,7 +45,7 @@
         "name": "Jane Doe",
         "email": "janedoe@hotmail.com",
         "ip": "46.3.126.235",
-        "devices": []
+        "devices": ["desktop QWE-778"]
     }
 ]
 
