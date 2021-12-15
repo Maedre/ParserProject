@@ -20,8 +20,8 @@ class Register:
                     ip      = user["ip"]
                     devices = user["devices"]
                     # merge devices if the email exist in registered user base
-                    devices = devices if email not in self.registered_users\
-                            else self.__merge_devices(self.registered_users[email]["devices"], devices)
+                    if email in self.registered_users:
+                        devices = self.__merge_devices(self.registered_users[email]["devices"], devices) 
                     # update the entry
                     self.registered_users[email]={"name"   : name,\
                                                   "ip"     : ip,\
@@ -38,11 +38,10 @@ class Register:
         else:
             return False
 
-    def __is_ip(self, key):
+    def __is_IP(self, ip):
         # checks if the registered IP of the key is a valid IPv4 address
         IPv4Pattern = r'^([\d]{1,3}.){3}[\d]{1,3}$'
-        IP = self.get_IP(key)
-        if re.match(IPv4Pattern, IP) is None:
+        if re.match(IPv4Pattern, ip) is None:
             return False
         else:
             return True
@@ -59,7 +58,7 @@ class Register:
 
     def __setitem__(self, key, value):
         if self.__is_key(key):
-            if self.__is_ip(key):
+            if self.__is_IP(value["ip"]):
                 self.registered_users[key] = value
             else:
                 print(f"Invalid IP address for the user {self.get_name(key)}.")
@@ -100,10 +99,10 @@ class Register:
         else:
             print(f"Invalid user key. Check the e-mail address \"{key}\".")
 
-    def set_IP(self, key, IP):
+    def set_IP(self, key, ip):
         if self.__is_key(key):
-            if self.__is_ip(key):
-                self.registered_users[key]["ip"] = IP
+            if self.__is_IP(ip):
+                self.registered_users[key]["ip"] = ip
             else:
                 print(f"Invalid IP address for the user {self.get_name(key)}.")
         else:
@@ -126,3 +125,5 @@ if __name__ == "__main__":
     print(Register1.get_name("onurcirit@gmail.com"))
     print(Register1.get_IP("onurcirit@gmail.com"))
     print(Register1.get_devices("onurcirit@gmail.com"))
+    Register1.set_IP("onurcirit@gmail.com","1.1.1.1.1.1")
+
