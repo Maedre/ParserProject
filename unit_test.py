@@ -5,30 +5,30 @@ from main import *
 Register_test = Register(["users_1.json", "users_2.json", "users_3.json", "users_4.json"])
 
 class TestSequenceFunctions(unittest.TestCase):
-    def test_GetIP(self):
+    def test_get_IP(self):
         stored_ip = Register_test.get_IP("onurcirit@gmail.com")
         self.assertEqual(stored_ip, "131.116.31.131")
 
-    def test_GetName(self):
+    def test_get_name(self):
         stored_name = Register_test.get_name("cansivri@gmail.com")
         self.assertEqual(stored_name, "Ahmet Can Sivri")
 
-    def test_GetDevices(self):
+    def test_get_devices(self):
         stored_devices = Register_test.get_devices("cansivri@gmail.com")
         self.assertEqual(stored_devices, ["desktop RDPN-8239"])
 
-    def test_SetIp(self):
+    def test_set_IP(self):
         Register_test.set_IP("cansivri@gmail.com","1.1.1.1")
         stored_set_ip = Register_test.get_IP("cansivri@gmail.com")
         self.assertEqual(stored_set_ip, "1.1.1.1")
         Register_test.set_IP("cansivri@gmail.com","245.14.240.222")
 
-    def test_SetDevice(self):
+    def test_set_devices(self):
         Register_test.set_devices("onurcirit@gmail.com", ["RDPN-1 phone"])
         stored_set_device = Register_test.get_devices("onurcirit@gmail.com")
         self.assertEqual(stored_set_device, ["RDPN-1 phone"])
 
-    def test_SetName(self):
+    def test_set_name(self):
         Register_test.set_name("cansivri@gmail.com", "Can Sivri")
         stored_set_name = Register_test.get_name("cansivri@gmail.com")
         self.assertEqual(stored_set_name, "Can Sivri")
@@ -42,13 +42,30 @@ class TestSequenceFunctions(unittest.TestCase):
         stored_return = Register_test._is_key("fernandomuslera@gmail.com")
         self.assertFalse(stored_return)
 
-    # def test_get_item(self):
-    #     stored_user = Register_test._getitem__("cansivri@gmail.com")    
-    #     self.assertEqual(stored_user, Register.registered_users["cansivri@gmail.com"])
+    def test__getitem__(self):
+        stored_user = Register_test.__getitem__("cansivri@gmail.com")    
+        self.assertDictEqual(stored_user, Register_test.registered_users["cansivri@gmail.com"])
 
-    def test_merge_device(self):
-        stored_device = Register_test._merge_devices(Register.registered_users["bradpitt@gmail.com"]["devices"], ["Panasonic"])
-        self.assertEqual(stored_device, ['Panasonic', "Brad's Nokia 3310", 'Porsche'])  #order is changing
+    def test__merge_devices(self):
+        stored_device = Register_test._merge_devices(Register_test.registered_users["bradpitt@gmail.com"]["devices"], ["Panasonic"])
+        Register_test.set_devices("bradpitt@gmail.com", stored_device)
+        self.assertEqual(stored_device, Register_test.registered_users["bradpitt@gmail.com"]["devices"])
+
+    def test__len__(self):
+        stored_length = Register_test.__len__()
+        self.assertEqual(stored_length, len(Register_test.registered_users))
+
+    # def test__str__(self):
+    #     stored_str = Register_test.__str__()
+    #     self.assertEqual(stored_str, Register_test.registered_users)
+
+    #__is_IP
+    #__is_email
+    #__setitem__
+    #__add__
+    #__mul__
+
+
 
 
 if __name__ == '__main__':

@@ -36,7 +36,9 @@ class Register:
 
     def _merge_devices(self, devices_i1, devices_i2):
         """private method for merging devices of user instances""" 
-        return list(set(devices_i1) | set(devices_i2))
+        device_list = list(set(devices_i1) | set(devices_i2))
+        device_list.sort()
+        return device_list
 
     def _is_key(self, key):
         # checks if the key exists in the registered user base
