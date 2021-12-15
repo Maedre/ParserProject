@@ -28,13 +28,13 @@ class Register:
 
                     # merge devices if the email exist in registered user base
                     if email in self.registered_users:
-                        devices = self.__merge_devices(self.registered_users[email]["devices"], devices) 
+                        devices = self._merge_devices(self.registered_users[email]["devices"], devices) 
                     # update the entry
                     self.registered_users[email]={"name"   : name,\
                                                   "ip"     : ip,\
                                                   "devices": devices}
 
-    def __merge_devices(self, devices_i1, devices_i2):
+    def _merge_devices(self, devices_i1, devices_i2):
         """private method for merging devices of user instances""" 
         return list(set(devices_i1) | set(devices_i2))
 
