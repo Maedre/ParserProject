@@ -31,10 +31,11 @@ class Register:
         return list(set(devices_i1) | set(devices_i2))
 
     def __is_key(self, key):
-        # todo
-        # implement
         # checks if the key exists in the registered user base
-        return True
+        if(self.registered_users.get(key)):
+            return True
+        else:
+            return False
 
     def __is_ip(self, key):
         # todo
