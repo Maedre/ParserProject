@@ -92,8 +92,10 @@ class Register:
         
 
     def __add__(self, other):
-        # todo
-        pass
+        Req=dict()
+        Req|=self.registered_users | other.registered_users
+        Register.registered_users = Req
+        return Register
 
     def __mul__(self, other):
         new_reg = {}
