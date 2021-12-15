@@ -8,6 +8,7 @@ class Register:
     def __init__(self, input_files):
         # todo
         # implement error checks1
+        # e-mail validity and ip address validity: discard if format is not correct
         # optional: run json parsers in parallel
         for input_file in input_files:
             with open(input_file) as f:
@@ -120,10 +121,13 @@ if __name__ == "__main__":
     print(Register1["onurcirit@gmail.com"])
     Register1["onurcirit@gmail.com"]={"name"    : "Mehmet Onur Cirit",\
                                       "ip"      : "192.168.0.1",\
-                                       "devices": ["phone", "PC"] }
+                                      "devices": ["phone", "PC"] }
     print(Register1["onurcirit@gmail.com"])
     print(Register1.get_name("onurcirit@gmail.com"))
     print(Register1.get_IP("onurcirit@gmail.com"))
     print(Register1.get_devices("onurcirit@gmail.com"))
-    Register1.set_IP("onurcirit@gmail.com","1.1.1.1.1.1")
+    Register1.set_IP("onurcirit@gmail.com","1.1.1.1")
+    print(Register1.get_IP("onurcirit@gmail.com"))
+    Register1.set_devices("onurcirit@gmail.com", ["RDPN-1 phone"])
+    print(Register1.get_devices("onurcirit@gmail.com"))
 
