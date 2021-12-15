@@ -1,51 +1,51 @@
 [
     {
-        "name": "",
-        "email": "",
+        "name": "Kaan Cİdarer",
+        "email": "kaan.cidarer@tttech-auto.com",
         "ip": "42.109.166.206",
-        "devices": [""]
+        "devices": ["DESKTOP-3213", "Samsung-Mobile-S10"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Eren Kaan Namal",
+        "email": "eren.namal@tttech-auto.com",
         "ip": "59.222.79.93",
-        "devices": []
+        "devices": ["DESKTOP-2112", "POCO-PHONE"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Erdal Tufan",
+        "email": "erdal.tufan@tttech-auto.com",
         "ip": "249.210.49.12",
-        "devices": []
+        "devices": ["DESKTOP-4545","Erdal's iPhone"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Barış Doğa Yavaş",
+        "email": "baris.yavas@tttech-auto.com",
         "ip": "109.75.184.28",
-        "devices": []
+        "devices": ["DESKTOP-2423", "Baris' ipad", "Samsung-Mobile-S8"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Ekrem İmamoğlu",
+        "email": "ekrem.imamoglu@istanbulbel.gov.tr",
         "ip": "12.22.175.21",
-        "devices": []
+        "devices": ["DESKTOP-3434", "Ekrem's iPhone"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Mansur Yavaş",
+        "email": "mansur.yavas@ankarabel.gov.tr",
         "ip": "173.97.62.253",
-        "devices": []
+        "devices": ["DESKTOP-0606", "Nokia 3110"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Cem Sezer",
+        "email": "cem.sezer@tttech-auto.com",
         "ip": "23.38.162.162",
-        "devices": []
+        "devices": ["DESKTOP-0910"]
     },
     {
-        "name": "",
-        "email": "",
+        "name": "Halit Arpac",
+        "email": "halit.arpac@tttech-auto.com",
         "ip": "233.71.18.190",
-        "devices": []
+        "devices": ["Halit's iphone"]
     }
 ]
 
