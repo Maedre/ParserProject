@@ -1,6 +1,6 @@
 [
     {
-        "name": "Kaan Cİdarer",
+        "name": "Kaan Cidarer",
         "email": "kaan.cidarer@tttech-auto.com",
         "ip": "42.109.166.206",
         "devices": ["DESKTOP-3213", "Samsung-Mobile-S10"]
@@ -18,19 +18,19 @@
         "devices": ["DESKTOP-4545","Erdal's iPhone"]
     },
     {
-        "name": "Barış Doğa Yavaş",
+        "name": "Baris Doga Yavas",
         "email": "baris.yavas@tttech-auto.com",
         "ip": "109.75.184.28",
         "devices": ["DESKTOP-2423", "Baris' ipad", "Samsung-Mobile-S8"]
     },
     {
-        "name": "Ekrem İmamoğlu",
+        "name": "Ekrem Imamoglu",
         "email": "ekrem.imamoglu@istanbulbel.gov.tr",
         "ip": "12.22.175.21",
         "devices": ["DESKTOP-3434", "Ekrem's iPhone"]
     },
     {
-        "name": "Mansur Yavaş",
+        "name": "Mansur Yavas",
         "email": "mansur.yavas@ankarabel.gov.tr",
         "ip": "173.97.62.253",
         "devices": ["DESKTOP-0606", "Nokia 3110"]
