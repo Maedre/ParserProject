@@ -3,11 +3,11 @@ import re
 
 
 class Register:
-    registered_users = {}
 
     def __init__(self, input_files):
         # todo
         # optional: run json parsers in parallel
+        self.registered_users = {}
         for input_file in input_files:
             with open(input_file) as f:
                 users = json.load(f)
@@ -96,8 +96,13 @@ class Register:
         pass
 
     def __mul__(self, other):
-        # todo
-        pass
+        new_reg = {}
+        common_users = self.registered_users.keys() & other.registered_users.keys()
+        for key in common_users:
+            devices = self._merge_devices(self.registered_users[key]["devices"],other.registered_users[key]["devices"])
+            new_reg.update({key: self.registered_users[key]})
+            new_reg[key]["devices"] = devices
+        return new_reg
 
     def get_name(self, key):
         if self._is_key(key):
@@ -161,3 +166,9 @@ if __name__ == "__main__":
     print(demo_register1.get_IP("bradpitt@gmail.com"))
     demo_register1.set_devices("bradpitt@gmail.com", ["RDPN-1 phone"])
     print(demo_register1.get_devices("bradpitt@gmail.com"))
+
+    # demo_register2 = Register(["users_3.json"])
+    # demo_register3 = Register(["users_4.json"])
+    # new_register = demo_register2 * demo_register3
+    # for user in new_register:
+    #     print(new_register[user])
