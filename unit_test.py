@@ -32,5 +32,15 @@ class TestSequenceFunctions(unittest.TestCase):
         stored_set_name = Register_test.get_name("cansivri@gmail.com")
         self.assertEqual(stored_set_name, "Can Sivri")
 
+    def test_is_key_true(self):
+        stored_return = Register_test._is_key("cansivri@gmail.com")
+        self.assertTrue(stored_return)
+    
+    def test_is_key_false(self):
+        stored_return = Register_test._is_key("fernandomuslera@gmail.com")
+        self.assertFalse(stored_return)
+
+   # def test_get_item(self):
+        
 if __name__ == '__main__':
     unittest.main()

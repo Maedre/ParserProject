@@ -32,7 +32,7 @@ class Register:
         """private method for merging devices of user instances""" 
         return list(set(devices_i1) | set(devices_i2))
 
-    def __is_key(self, key):
+    def _is_key(self, key):
         # checks if the key exists in the registered user base
         if(self.registered_users.get(key)):
             return True
@@ -52,13 +52,13 @@ class Register:
         return len(self.registered_users)
 
     def __getitem__(self, key):
-        if self.__is_key(key):
+        if self._is_key(key):
             return self.registered_users[key]
         else:
             print(f"Invalid user key. Check the e-mail address \"{key}\".")
 
     def __setitem__(self, key, value):
-        if self.__is_key(key):
+        if self._is_key(key):
             if self.__is_IP(value["ip"]):
                 self.registered_users[key] = value
             else:
@@ -76,32 +76,32 @@ class Register:
         pass
 
     def get_name(self, key):
-        if self.__is_key(key):
+        if self._is_key(key):
             return self.registered_users[key]["name"]
         else:
             print(f"Invalid user key. Check the e-mail address \"{key}\".")
         
 
     def get_IP(self, key):
-        if self.__is_key(key):
+        if self._is_key(key):
             return self.registered_users[key]["ip"]
         else:
             print(f"Invalid user key. Check the e-mail address \"{key}\".")
 
     def get_devices(self, key):
-        if self.__is_key(key):
+        if self._is_key(key):
             return self.registered_users[key]["devices"]
         else:
             print(f"Invalid user key. Check the e-mail address \"{key}\".")
 
     def set_name(self, key, name):
-        if self.__is_key(key):
+        if self._is_key(key):
             self.registered_users[key]["name"] = name
         else:
             print(f"Invalid user key. Check the e-mail address \"{key}\".")
 
     def set_IP(self, key, ip):
-        if self.__is_key(key):
+        if self._is_key(key):
             if self.__is_IP(ip):
                 self.registered_users[key]["ip"] = ip
             else:
@@ -110,7 +110,7 @@ class Register:
             print(f"Invalid user key. Check the e-mail address \"{key}\".")
 
     def set_devices(self, key, devices):
-        if self.__is_key(key):
+        if self._is_key(key):
             self.registered_users[key]["devices"] = devices
         else:
             print(f"Invalid user key. Check the e-mail address \"{key}\".")
