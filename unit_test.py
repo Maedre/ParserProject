@@ -43,12 +43,12 @@ class TestSequenceFunctions(unittest.TestCase):
         self.assertFalse(stored_return)
 
     # def test_get_item(self):
-    #     stored_user = Register_test._getitem__("cansivri@gmail.com")    it should be single underscore in main.py file. 
-    #     self.assertEqual(stored_user, {'name': 'Ahmet Can Sivri', 'ip': '245.14.240.222', 'devices': ['desktop RDPN-8239']})
+    #     stored_user = Register_test._getitem__("cansivri@gmail.com")    
+    #     self.assertEqual(stored_user, Register.registered_users["cansivri@gmail.com"])
 
     def test_merge_device(self):
         stored_device = Register_test._merge_devices(Register.registered_users["bradpitt@gmail.com"]["devices"], ["Panasonic"])
-        self.assertEqual(stored_device, ['Panasonic', 'Porsche', "Brad's Nokia 3310"])
+        self.assertEqual(stored_device, ['Panasonic', "Brad's Nokia 3310", 'Porsche'])  #order is changing
 
 
 if __name__ == '__main__':
