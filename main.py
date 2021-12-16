@@ -19,7 +19,7 @@ class Register:
                     ip      = user["ip"]
                     devices = user["devices"]
                     # check validity of IP and e-mail addresses
-                    if not self.__is_IP(ip):
+                    if not self._is_IP(ip):
                         print(f"Invalid IP address for the user {name}.")
                         continue    # skip the user with corrupted IP address
                     if not self._is_email(email):
@@ -47,7 +47,7 @@ class Register:
         else:
             return False
 
-    def __is_IP(self, ip):
+    def _is_IP(self, ip):
         # checks if the IP is a valid IPv4 address
         IPv4Pattern = r'^([\d]{1,3}.){3}[\d]{1,3}$'
         if re.match(IPv4Pattern, ip) is None:
@@ -85,7 +85,7 @@ class Register:
 
     def __setitem__(self, key, value):
         if self._is_key(key):
-            if self.__is_IP(value["ip"]) or self._is_email(value["email"]):
+            if self._is_IP(value["ip"]) or self._is_email(value["email"]):
                 self.registered_users[key] = value
             else:
                 print(f"Invalid IP or e-mail address for the user {self.get_name(key)}.")
@@ -135,7 +135,7 @@ class Register:
 
     def set_IP(self, key, ip):
         if self._is_key(key):
-            if self.__is_IP(ip):
+            if self._is_IP(ip):
                 self.registered_users[key]["ip"] = ip
             else:
                 print(f"Invalid IP address for the user {self.get_name(key)}.")

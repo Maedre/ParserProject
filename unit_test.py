@@ -58,16 +58,24 @@ class TestSequenceFunctions(unittest.TestCase):
     # def test__str__(self):
     #     stored_str = Register_test.__str__()
     #     self.assertEqual(stored_str, Register_test.registered_users)
-    
+
     def test__is_email_true(self):
         stored_email_true = Register_test._is_email("cansivri@gmail.com")
         self.assertEqual(stored_email_true, True)
 
     def test__is_email_false(self):
-        stored_email_true = Register_test._is_email("%&cansivri@gmail.com")
-        self.assertEqual(stored_email_true, False)
-    #__is_IP
-    #__is_email
+        stored_email_false = Register_test._is_email("%&cansivri@gmail.com")
+        self.assertEqual(stored_email_false, False)
+
+    def test_is_IP_true(self):
+        stored_ip_true = Register_test._is_IP("157.164.4.56")
+        self.assertEqual(stored_ip_true, True)
+
+    def test_is_IP_false(self):
+        stored_ip_false = Register_test._is_IP("157.164.4.abc")
+        self.assertEqual(stored_ip_false, False)
+
+
     #__setitem__
     #__add__
     #__mul__
