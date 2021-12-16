@@ -95,9 +95,10 @@ class Register:
 
     def __add__(self, other):
         Req=dict()
+        out_register = Register([])
         Req|=self.registered_users | other.registered_users
-        Register.registered_users = Req
-        return Register
+        out_register.registered_users = Req
+        return out_register
 
     def __mul__(self, other):
         new_reg = {}
