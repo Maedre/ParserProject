@@ -101,13 +101,16 @@ class Register:
         return out_register
 
     def __mul__(self, other):
-        new_reg = {}
+        new_reg = dict()
+        out_register = Register([])
         common_users = self.registered_users.keys() & other.registered_users.keys()
+        # merge devices of common users
         for key in common_users:
             devices = self._merge_devices(self.registered_users[key]["devices"],other.registered_users[key]["devices"])
             new_reg.update({key: self.registered_users[key]})
             new_reg[key]["devices"] = devices
-        return new_reg
+        out_register.registered_users = new_reg
+        return out_register
 
     def get_name(self, key):
         if self._is_key(key):
@@ -172,8 +175,8 @@ if __name__ == "__main__":
     demo_register1.set_devices("bradpitt@gmail.com", ["RDPN-1 phone"])
     print(demo_register1.get_devices("bradpitt@gmail.com"))
 
+    # __mul__ demo
     # demo_register2 = Register(["users_3.json"])
     # demo_register3 = Register(["users_4.json"])
     # new_register = demo_register2 * demo_register3
-    # for user in new_register:
-    #     print(new_register[user])
+    # print(new_register)
