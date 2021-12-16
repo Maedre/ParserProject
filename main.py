@@ -22,7 +22,7 @@ class Register:
                     if not self.__is_IP(ip):
                         print(f"Invalid IP address for the user {name}.")
                         continue    # skip the user with corrupted IP address
-                    if not self.__is_email(email):
+                    if not self._is_email(email):
                         print(f"E-mail address {email} is not valid.")
                         continue    # skip the user with corrupted e-mail address
 
@@ -55,7 +55,7 @@ class Register:
         else:
             return True
 
-    def __is_email(self, email):
+    def _is_email(self, email):
         # checks if the e-mail address is valid
         re_email = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
         if re.match(re_email, email) is None:
@@ -85,7 +85,7 @@ class Register:
 
     def __setitem__(self, key, value):
         if self._is_key(key):
-            if self.__is_IP(value["ip"]) or self.__is_email(value["email"]):
+            if self.__is_IP(value["ip"]) or self._is_email(value["email"]):
                 self.registered_users[key] = value
             else:
                 print(f"Invalid IP or e-mail address for the user {self.get_name(key)}.")
