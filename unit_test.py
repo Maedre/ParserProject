@@ -1,4 +1,3 @@
-import random
 import unittest
 from main import *
 
@@ -87,9 +86,17 @@ class TestSequenceFunctions(unittest.TestCase):
         stored_length = Register_test.__len__()
         self.assertEqual(stored_length, len(Register_test.registered_users))
 
-    # def test__str__(self):
-    #     stored_str = Register_test.__str__()
-    #     self.assertEqual(stored_str, Register_test.registered_users)
+    def test__add__(self):
+        test_register3 = Register(["users_3.json"])
+        test_register4 = Register(["users_4.json"])
+        stored_register = test_register3 + test_register4
+        self.assertIsNotNone(stored_register.registered_users)
+
+    def test__mul__(self):
+        test_register3 = Register(["users_3.json"])
+        test_register4 = Register(["users_4.json"])
+        stored_register = test_register3 * test_register4
+        self.assertIsNotNone(stored_register.registered_users)
 
     def test__is_email_true(self):
         stored_email_true = Register_test._is_email("cansivri@gmail.com")
@@ -106,18 +113,6 @@ class TestSequenceFunctions(unittest.TestCase):
     def test_is_IP_false(self):
         stored_ip_false = Register_test._is_IP("157.164.4.abc")
         self.assertEqual(stored_ip_false, False)
-
-    # def test__set__item_true(self):
-    #     stored_set_item = Register_test.__setitem__("cansivri@gmail.com", "154.12.15.47")
-    #     self.assertEqual(stored_set_item, Register_test.registered_users("cansivri@gmail.com"))
-
-
-    #__setitem__
-    #__add__
-    #__mul__
-
-
-
 
 if __name__ == '__main__':
     unittest.main()
