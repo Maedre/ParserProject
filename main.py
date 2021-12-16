@@ -154,29 +154,96 @@ class Register:
 
 if __name__ == "__main__":
     # Demo
-    demo_register1 = Register(["users_3.json", "users_4.json"])
-    # accessing user register content (__str__, __len__)
-    print(f"The length of the register is {len(demo_register1)}")
-    print(demo_register1)
-    # accessing individual users (__getitem__, __set_item__)
-    print(demo_register1["bradpitt@gmail.com"])
-    demo_register1["bradpitt@gmail.com"]={"name"    : "William Bradley Pitt",\
-                                          "ip"      : "192.168.0.1",\
-                                          "devices": ["Phone-Bradley", "DESKTOP-BRADLEY"]}              
-    print(demo_register1["bradpitt@gmail.com"])
-    # accessing attributes of a user (getter and setter methods)
-    print(demo_register1.get_name("bradpitt@gmail.com"))
-    print(demo_register1.get_IP("bradpitt@gmail.com"))
-    print(demo_register1.get_devices("bradpitt@gmail.com"))
-    demo_register1.set_name("bradpitt@gmail.com","Brad Pitt")
-    print(demo_register1.get_name("bradpitt@gmail.com"))
-    demo_register1.set_IP("bradpitt@gmail.com","1.1.1.1")
-    print(demo_register1.get_IP("bradpitt@gmail.com"))
-    demo_register1.set_devices("bradpitt@gmail.com", ["RDPN-1 phone"])
-    print(demo_register1.get_devices("bradpitt@gmail.com"))
+    dct_json = dict()
+    counter = 0
+    files = os.listdir(".")
+    for file in files:
+        if ".json" in file:
+            counter += 1
+            dct_json[str(counter)] = file
+    print(dct_json)
+    if len(dct_json.keys()) == 0:
+        print("No User Data in project folder!!\n")
+        print("Program ended...\n")
+    else:
+        print(f"{len(dct_json.keys())} user data found in project folder.\n")
+        lst_selec = ["g","s", "u", "m", "q"]
+        usr_inp = input(
+            f"Press G to get user register info\nPress S to set user to user register\nPress U to have union of 2 user register\nPress M to have intersection of two register\nPress Q to exit\n")
+        usr_inp = usr_inp.lower()
+        while not (usr_inp in lst_selec):
+            print("Invalid Character!!!\n")
+            usr_inp = input(
+                f"Press G to get user register info\nPress S to set info to user register\nPress U to have union of 2 user register\nPress M to have intersection of two register\nPress Q to exit\n")
+            usr_inp = usr_inp.lower()
+        if usr_inp == "q":
+            print("Program ended...\n")
+        elif usr_inp == "g":
+            data_inp= input(f"Press select user data from 1 to {len(dct_json.keys())}\n")
+            while not( data_inp in dct_json.keys()):
+                print("Invalid Character!!!\n")
+                data_inp = input(f"Press select user data from 1 to {len(dct_json.keys())}\n")
+            lst_opt=["a","s"]
+            opt_inp=(input(f"Do want to show all info in register (A)  or info for individual user(S)?")).lower()
+            while not (opt_inp in lst_opt):
+                print("Invalid Character!!!\n")
+                opt_inp = (input(f"Do want to show all info in register (A)  or info for individual user(S)?")).lower(g)
+            Req = Register([dct_json[data_inp]])
+            if opt_inp =="a":
+                print(Req)
+            else:
+                inp_add=input("Enter user mail address\n")
+                Info_Req=Req[inp_add]
+                while Info_Req==None:
+                    inp_add = input("Enter user mail address\n")
+                    Info_Req = Req[inp_add]
+                print(f"Name: {Req.get_name(inp_add)}")
+                print(f"IP Address: {Req.get_IP(inp_add)}")
+                print(f"Devices: {Req.get_devices(inp_add)}")
+        elif usr_inp=="s":
+            data_inp= input(f"Press select user data from 1 to {len(dct_json.keys())}\n")
+            while not( data_inp in dct_json.keys()):
+                print("Invalid Character!!!\n")
+                data_inp = input(f"Press select user data from 1 to {len(dct_json.keys())}\n")
+            Req = Register([dct_json[data_inp]])
+            inp_add = input("Enter user mail address\n")
+            Info_Req = Req[inp_add]
+            while Info_Req == None:
+                inp_add = input("Enter user mail address\n")
+                Info_Req = Req[inp_add]
+            inp_name=input("Set a name to user\n")
+            Req.set_name(inp_add,inp_name)
+            inp_IP=input("Set an IP to user\n")
+            Req.set_IP(inp_add,inp_IP)
+            inp_devices=input("Set a device to user\n")
+            Req.set_devices(inp_add,inp_devices)
+            print(f"Name: {Req.get_name(inp_add)}")
+            print(f"IP Address: {Req.get_IP(inp_add)}")
+            print(f"Devices: {Req.get_devices(inp_add)}")
+        elif usr_inp=="u":
+            input_1=input("For union; *.Register?")
+            while not (input_1 in dct_json.keys()):
+                print("Invalid number!!!")
+                input_1 = input("For union; *.Register?")
+            input_2 = input("For union; *.Register?")
+            while not (input_2 in dct_json.keys()):
+                print("Invalid number!!!")
+                input_2 = input("For union; *.Register?")
+            Req1=Register([dct_json[input_1]])
+            Req2=Register([dct_json[input_2]])
+            Req3=Req1+Req2
+            print(Req3)
+        else:
+            input_1=input("For intersection; *.Register?")
+            while not (input_1 in dct_json.keys()):
+                print("Invalid number!!!")
+                input_1 = input("For intersection; *.Register?")
+            input_2 = input("For intersection; *.Register?")
+            while not (input_2 in dct_json.keys()):
+                print("Invalid number!!!")
+                input_2 = input("For intersection; *.Register?")
+            Req1=Register([dct_json[input_1]])
+            Req2=Register([dct_json[input_2]])
+            Req3=Req1*Req2
+            print(Req3)
 
-    # __mul__ demo
-    # demo_register2 = Register(["users_3.json"])
-    # demo_register3 = Register(["users_4.json"])
-    # new_register = demo_register2 * demo_register3
-    # print(new_register)
