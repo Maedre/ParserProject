@@ -1,9 +1,9 @@
 import json
 import re
-
-
+import multiprocessing as mp
+namee = ""
 class Register:
-
+    
     def __init__(self, input_files):
         # todo
         # optional: run json parsers in parallel
@@ -112,8 +112,11 @@ class Register:
         out_register.registered_users = new_reg
         return out_register
 
-    def get_name(self, key):
+    def get_name(self, key,q):
+        global namee
         if self._is_key(key):
+            namee = self.registered_users[key]["name"]
+            q.put(namee)
             return self.registered_users[key]["name"]
         else:
             print(f"Invalid user key. Check the e-mail address \"{key}\".")
@@ -165,11 +168,11 @@ if __name__ == "__main__":
                                           "devices": ["Phone-Bradley", "DESKTOP-BRADLEY"]}              
     print(demo_register1["bradpitt@gmail.com"])
     # accessing attributes of a user (getter and setter methods)
-    print(demo_register1.get_name("bradpitt@gmail.com"))
+    #print(demo_register1.get_name("bradpitt@gmail.com"))
     print(demo_register1.get_IP("bradpitt@gmail.com"))
     print(demo_register1.get_devices("bradpitt@gmail.com"))
     demo_register1.set_name("bradpitt@gmail.com","Brad Pitt")
-    print(demo_register1.get_name("bradpitt@gmail.com"))
+    #print(demo_register1.get_name("bradpitt@gmail.com"))
     demo_register1.set_IP("bradpitt@gmail.com","1.1.1.1")
     print(demo_register1.get_IP("bradpitt@gmail.com"))
     demo_register1.set_devices("bradpitt@gmail.com", ["RDPN-1 phone"])
@@ -180,3 +183,11 @@ if __name__ == "__main__":
     # demo_register3 = Register(["users_4.json"])
     # new_register = demo_register2 * demo_register3
     # print(new_register)
+    print("#########################")
+    q = mp.Queue()
+    p = mp.Process(target=demo_register1.get_name, args=("bradpitt@gmail.com",q))
+    p.start()
+    print(q.get())
+    p.join()
+    
+   
