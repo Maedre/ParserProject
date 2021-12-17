@@ -161,7 +161,6 @@ if __name__ == "__main__":
         if ".json" in file:
             counter += 1
             dct_json[str(counter)] = file
-    print(dct_json)
     if len(dct_json.keys()) == 0:
         print("No User Data in project folder!!\n")
         print("Program ended...\n")
